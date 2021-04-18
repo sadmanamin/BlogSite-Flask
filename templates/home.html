@@ -1,0 +1,33 @@
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1>Welcome {{cur_user.name}}</h1>
+<table>
+    <tr>
+        <th>Blog Name</th>
+        <th>Content</th>
+        <th>User ID</th>
+    </tr>
+    {% for blog in blogs %}
+    <tr>
+        <td>{{blog.blog_name}}</td>
+        <td>{{blog.blog_content}}</td>
+        <td>{{blog.user_id}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="/home/{{cur_user.id}}" method="POST">
+    <fieldset>
+        <legend>Write a new Blog</legend>
+        <label for="fname">Blog Name:</label><br>
+        <input type="text" id="fname" name="blog_name"><br>
+        <label for="lname">Blog Content:</label><br>
+        <input type="text" id="lname" name="blog_content"><br><br>
+        <input type="submit" value="Submit">
+    </fieldset>
+
+</form>
+
+{% endblock %}

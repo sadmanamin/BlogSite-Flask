@@ -1,0 +1,19 @@
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1>Welcome {{users.name}}</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

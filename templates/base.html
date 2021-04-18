@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Blog Site by Flask</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor.css') }}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    
+    <header class="s-header">
+
+        <div class="row s-header__content">
+
+            <div class="s-header__logo">
+                {% if logged %}
+                <a class="logo" href="/home/{{user.id}}">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Homepage">
+                </a>
+                {% else %}
+                <a class="logo" href="/index">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Homepage">
+                </a>
+                {% endif %}
+                
+            </div>
+
+            <nav class="s-header__nav-wrap">
+
+                <h2 class="s-header__nav-heading h6">Site Navigation</h2>
+
+                <ul class="s-header__nav">
+                    <li class="current"><a href="index.html" title="">Home</a></li>
+
+                    {% if logged %}
+                            <li><a href="/myblog/{{user.id}}" title="">Blog</a></li>
+                            <li><a href="#" title="">{{user.name}}</a></li>
+                            <li><a href="/index">Log Out</a></li>
+                            {% else %}
+                            <li><a href="/signup" title="">Sign Up</a></li>
+                            <li><a href="/login" title="">Login</a></li>
+
+                    {% endif %}
+                </ul> <!-- end header__nav -->
+
+                <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
+
+            </nav> <!-- end header__nav-wrap -->
+                   
+            <a class="s-header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            
+
+
+            <a class="s-header__search-trigger" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 004.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0018 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </a>
+
+        </div> <!-- end s-header__content -->
+
+    </header> <!-- end header -->
+
+    {% block body %}{% endblock %}
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+
+            <div class="row">
+
+                <div class="column large-4 medium-6 tab-12 s-footer__info">
+
+                    <h5>About Our Site</h5>
+
+                    <p>
+                    This is a test blogging site made by Flask.
+                    </p>
+
+                </div> <!-- end s-footer__info -->
+
+
+
+            </div> <!-- end row -->
+
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="ss-copyright">
+                        <span>© Copyright Abstract 2020</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>		         	
+                    </div> <!-- end ss-copyright -->
+                </div>
+            </div> 
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+                </a>
+            </div> <!-- end ss-go-top -->
+        </div> <!-- end s-footer__bottom -->
+
+   </footer> <!-- end s-footer -->
+
+      <!-- Java Script
+   ================================================== -->
+   <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

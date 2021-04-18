@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<section class="s-content site-page">
+    <div class="row">
+        <div class="column large-12">
+
+            <section>
+
+                <div class="s-content__media">
+                    <img src="images/thumbs/contact/contact-1050.jpg" 
+                         srcset="images/thumbs/contact/contact-2100.jpg 2100w, 
+                                 images/thumbs/contact/contact-1050.jpg 1050w, 
+                                 images/thumbs/contact/contact-525.jpg 525w" sizes="(max-width: 2100px) 100vw, 2100px" alt="">
+                </div> <!-- end s-content__media -->
+
+                <div class="s-content__primary">
+
+
+                    <form name="cForm" id="cForm" class="s-content__form" method="POST" action="/login">
+                        <fieldset>
+
+
+                            <div class="form-field">
+                                <input name="cEmail" type="text" id="cEmail" class="h-full-width" placeholder="Your Email" value="">
+                            </div>
+
+                            <div class="form-field">
+                                <input name="cPass" type="password" id="cPass" class="h-full-width" placeholder="Your Password"  value="">
+                            </div>
+
+                            <button type="submit" class="submit btn btn--primary btn--medium h-full-width">Submit</button>
+
+                        </fieldset>
+                   </form> <!-- end form -->
+
+                </div> <!-- end s-content__primary -->
+
+            </section>
+
+        </div> <!-- end column -->
+    </div> <!-- end row -->
+</section> <!-- end s-content -->
+
+
+{% endblock %}

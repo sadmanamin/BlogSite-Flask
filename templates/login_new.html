@@ -1,0 +1,17 @@
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Sign In</h1>
+<form action="/login" method="POST">
+    <label for="Email">Email</label><br>
+    <input type="text" name="Email" id="Email">
+    <br>
+    <label for="Pass">Password</label><br>
+    <input type="password" name="Pass" id="Pass">
+    <br>
+    <input type="submit" name = 'Submit' value="Sign In">
+</form>
+<button href='/' name='signup'>Sign Up</button>
+{% endblock %}

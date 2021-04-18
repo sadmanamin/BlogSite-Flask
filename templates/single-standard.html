@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Blog Page</title>
+{% endblock %}
+
+{% block body %}
+
+
+    <!-- content
+    ================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
+
+                <article class="s-post entry format-standard">
+
+                    <div class="s-content__primary">
+
+
+                        <form name="cForm" id="cForm" class="s-content__form" method="POST" action="/myblog/{{user.id}}">
+                            <fieldset>
+    
+    
+                                <div class="form-field">
+                                    <input name="cBlogname" type="text" id="cBlogname" class="h-full-width" placeholder="Give your blog a title" value="">
+                                </div>
+    
+                                <div class="form-field">
+                                    <input name="cBlogcontent" type="text" id="cBlogcontent" class="h-full-width" placeholder="Write your blog" value="">
+                                </div>
+    
+                                <div class="form-field">
+                                    <input name="cCategory" type="text" id="cCategory" class="h-full-width" placeholder="Categories"  value="">
+                                </div>
+    
+                                <button type="submit" class="submit btn btn--primary btn--medium h-full-width">Add Blog</button>
+    
+                            </fieldset>
+                       </form> <!-- end form -->
+    
+                    </div> <!-- end s-content__primary -->
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb">
+                            <img src="images/thumbs/single/standard/standard-1050.jpg" 
+                                 srcset="images/thumbs/single/standard/standard-2100.jpg 2100w, 
+                                         images/thumbs/single/standard/standard-1050.jpg 1050w, 
+                                         images/thumbs/single/standard/standard-525.jpg 525w" sizes="(max-width: 2100px) 100vw, 2100px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    {% for blog in blogs%}
+                    <div class="s-content__primary">
+
+                        <h2 class="s-content__title s-content__title--post"><a href="/blog_update/{{user.id}}/{{blog.bid}}">{{blog.blog_name}}</a></h2>
+
+                        <ul class="s-content__post-meta">
+                            <li class="date">{{blog.date_created}}</li>
+                            <li class="cat">{{blog.blog_category}}</li>
+                        </ul>
+
+                        <p class="lead">{{blog.blog_content}}</p> 
+                    {% endfor%}
+                       
+
+
+
+                    </div> <!-- end s-content__primary -->
+                </article>
+
+            </div> <!-- end column -->
+        </div> <!-- end row -->
+
+
+        <!-- comments
+        ================================================== -->
+
+
+    </section> <!-- end s-content -->
+
+
+{% endblock %}
